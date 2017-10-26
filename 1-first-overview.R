@@ -1,4 +1,5 @@
-# test načtení, zobrazení výsledků
+# test načtení, zobrazení výsledků na mapě a první orientace
+
 library(tidyverse)
 library(RCzechia) # devtools::install_github("jlacko/RCzechia")
 library(tmap)
@@ -10,6 +11,9 @@ library(raster)
 #----- načtení dat
 results <- read_xlsx(path = '~/Tomio/src/SPD-ORP.xlsx',
                      sheet = 'src')
+
+results <- data.frame(kod = results$kod, # pouze sloupce, co potřebuju, ať v tom není bordel...
+                      podil = results$podil)
 
 wobce <- tmaptools::append_data(shp = obce_polygony,
                                data = results,
@@ -31,7 +35,7 @@ leyenda <- "Procento platných hlasů"  # nadpis legendy
 
 tmTomioORP <- tm_shape(republika, bbox = bbox)+tm_borders("grey30", lwd = 1) +
   tm_shape(wobce) + tm_fill(col = "podil", palette = "YlOrBr", title = leyenda, textNA = "Jinak (vojenské újezdy)") +
-  tm_shape(velkaMesta) + tm_borders("grey75", lwd = 0.5)+
+  tm_shape(velkaMesta) + tm_borders("grey30", lwd = 0.5)+
   tm_style_white(nadpis, frame = F, legend.text.size = 0.7, legend.title.size = 1.5, legend.format = list(text.separator = "-", fun=function(x) paste0(formatC(x, digits=0, format="f"), " %")))
 
 print(tmTomioORP)
