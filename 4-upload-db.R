@@ -15,6 +15,6 @@ myDb <- dbConnect(dbDriver('PostgreSQL'),
 
 dbWriteTable(myDb, c("jla_blog", "tomio_results_orp"), value = results)
 dbWriteTable(myDb, c("jla_blog", "tomio_results_orp_statak"), value = wrkTomio)
-dbWriteTable(myDb, c("jla_blog", "tomio_korelace"), value = korelace)
+dbWriteTable(myDb, c("jla_blog", "tomio_korelace"), value = wrkTomio)
 
 dbDisconnect(myDb) # zavřít, zhasnout...
