@@ -29,20 +29,6 @@ wrkTomio <- results %>%
   inner_join(statak, by = c("kod" = "ORP"))
 
 
-# ------ pre-process
-
-processor <- caret::preProcess(wrkTomio[, 4:10],
-                               method = c("center", "scale"))
-
-frmTomio <- data.frame(podil = wrkTomio$podil,
-                       predict(processor, wrkTomio[, 4:10]))
-
-model <- lm(data = frmTomio,
-            formula = podil ~ .
-            )
-summary(model)
-
-
 # ------ kreslení  
 wobce <- append_data(shp = obce_polygony,
                      data = wrkTomio,

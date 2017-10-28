@@ -1,9 +1,9 @@
 # načtení výsledků po okresech, hledání korelace s daty
-
-library(readxl)
-library(tidyverse)
 library(grid)
 library(gridExtra)
+library(readxl)
+library(tidyverse)
+
 
 # načtení dat ----
 results <- read_xlsx(path = '~/Tomio/src/SPD-okresy.xlsx',
