@@ -32,5 +32,5 @@ Analýza volebního výsledku SPD - Tomio Okamura
 ![](korelace.png)
 
 ### Závěr:
-- podpora xenofoba má silnou zápornou korelaci s počtem cizinců v okrese (Tomiovi voliči znají muslima a mešitu leda z televize)  
-- silná pozitivní korelace podpory SPD s počtem vyplacených sociálních dávek a nezaměstnaností (zejména nezaměstnaností mužů)
+- podpora xenofoba má silnou *zápornou* korelaci s počtem cizinců v okrese (Tomiovi voliči znají muslima a mešitu leda z televize)  
+- silná *pozitivní* korelace podpory SPD s počtem vyplacených sociálních dávek a nezaměstnaností (zejména nezaměstnaností mužů)
