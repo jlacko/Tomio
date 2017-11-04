@@ -1,11 +1,10 @@
-# uložení dat pro použití na blogu
+# zhodnocení napočtené korelace stran a veličin
 library(DBI)
 library(dbplyr)
 library(RPostgreSQL)
 library(tidyverse)
 
 # Připojení databáze ----
-
 myDb <- dbConnect(dbDriver('PostgreSQL'),
                   host = "db.jla-data.net",
                   port = 5432,
@@ -13,10 +12,10 @@ myDb <- dbConnect(dbDriver('PostgreSQL'),
                   dbname = "dbase",
                   password = rstudioapi::askForPassword("Database password"))
 
-dbWriteTable(myDb, c("jla_blog", "tomio_results_orp"), value = results)
-dbWriteTable(myDb, c("jla_blog", "tomio_results_orp_statak"), value = wrkTomio)
-dbWriteTable(myDb, c("jla_blog", "tomio_okresy"), value = wrkTomio)
-dbWriteTable(myDb, c("jla_blog", "strany_korelace"), value = frmStrany)
-dbWriteTable(myDb, c("jla_blog", "strany_detail"), value = frmVeliciny)
+results <- tbl(myDb, dbplyr::in_schema('jla_blog','strany_detail')) %>%
+  as.data.frame()
+
+
+
 
 dbDisconnect(myDb) # zavřít, zhasnout...
