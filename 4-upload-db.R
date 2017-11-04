@@ -7,7 +7,7 @@ library(tidyverse)
 # Připojení databáze ----
 
 myDb <- dbConnect(dbDriver('PostgreSQL'),
-                  host = "jla-postgres.c7ymi3y4c6gx.eu-central-1.rds.amazonaws.com",
+                  host = "db.jla-data.net",
                   port = 5432,
                   user = "jindra",
                   dbname = "dbase",
@@ -16,5 +16,6 @@ myDb <- dbConnect(dbDriver('PostgreSQL'),
 dbWriteTable(myDb, c("jla_blog", "tomio_results_orp"), value = results)
 dbWriteTable(myDb, c("jla_blog", "tomio_results_orp_statak"), value = wrkTomio)
 dbWriteTable(myDb, c("jla_blog", "tomio_okresy"), value = wrkTomio)
+dbWriteTable(myDb, c("jla_blog", "strany_korelace"), value = frmStrany)
 
 dbDisconnect(myDb) # zavřít, zhasnout...
